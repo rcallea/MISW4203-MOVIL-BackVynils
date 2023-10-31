@@ -44,46 +44,7 @@ export class AlbumService {
         }
     }
 
-    async createOther(albumDTO: AlbumDTO): Promise<AlbumDTO> {
-        const { error } = validate(this.schema, albumDTO);
-
-        if(error) 
-            throw new BusinessLogicException(error.toString(), BusinessError.BAD_REQUEST)    
-        else {
-            const album = new Album();
-            album.name = albumDTO.name;
-            album.cover = albumDTO.cover;
-            album.releaseDate = albumDTO.releaseDate;
-            album.description = albumDTO.description;
-            album.genre = albumDTO.genre;
-            album.recordLabel = albumDTO.recordLabel;
-
-            return await this.albumRepository.save(album);
-        }
-    }
     async update(id: number, albumDTO: AlbumDTO): Promise<AlbumDTO> {
-
-        const album = await this.albumRepository.findOne(id);
-        if (!album)
-            throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND)
-        else {
-            const { error } = validate(this.schema, albumDTO);
-
-            if(error)
-                throw new BusinessLogicException(error.toString(), BusinessError.BAD_REQUEST)    
-            else {
-                album.name = albumDTO.name;
-                album.cover = albumDTO.cover;
-                album.releaseDate = albumDTO.releaseDate;
-                album.description = albumDTO.description;
-                album.genre = albumDTO.genre;
-                album.recordLabel = albumDTO.recordLabel;
-                await this.albumRepository.save(album);
-                return album;
-            }
-        }
-    }
-    async updateOther(id: number, albumDTO: AlbumDTO): Promise<AlbumDTO> {
 
         const album = await this.albumRepository.findOne(id);
         if (!album)
