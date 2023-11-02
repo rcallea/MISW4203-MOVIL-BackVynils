@@ -28,15 +28,7 @@ jobs:
       - name: Run Tests and Generate Coverage
         run: |
             npm run test:cov
-            find . -name lcov.info
-            find . -name sonar-cloud-reporter.xml
-            ls -al ./src/coverage
-            echo ------------------------------
-            ls -al
-            echo ------------------------------
             sed -i 's/\/home\/runner\/work\/MISW4203-MOVIL-BackVynils\/MISW4203-MOVIL-BackVynils\//\/github\/workspace\//g' ./src/coverage/lcov.info
-            echo sed -i 's/\/home\/runner\/work\/MISW4203-MOVIL-BackVynils\/MISW4203-MOVIL-BackVynils\//\/github\/workspace\//g' sonar-cloud-reporter.xml
-            cat ./src/coverage/lcov.info
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
