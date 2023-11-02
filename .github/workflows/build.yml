@@ -29,8 +29,9 @@ jobs:
         run: |
             npm run test:cov
             find . -name lcov.info
-            cat ./src/coverage/lcov.info
             ls -al ./src/coverage
+            echo ------------------------------
+            cat ./src/coverage/lcov.info
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
