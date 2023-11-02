@@ -31,7 +31,7 @@ jobs:
             find . -name lcov.info
             ls -al ./src/coverage
             echo ------------------------------
-            sed -i 's/\/home\/runner\/work\/MISW4203-MOVIL-BackVynils\/MISW4203-MOVIL-BackVynils\//\/github\/workspace\//g' lcov.info
+            sed -i 's/\/home\/runner\/work\/MISW4203-MOVIL-BackVynils\/MISW4203-MOVIL-BackVynils\//\/github\/workspace\//g' ./src/coverage/lcov.info
             cat ./src/coverage/lcov.info
 
       - name: SonarCloud Scan
